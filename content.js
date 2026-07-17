@@ -1,18 +1,26 @@
-(function injectDefensiveWrapper() {
-  // Guard against duplicate injections if the event triggers multiple times
+(function injectOrClearDefensiveWrapper() {
+  // Listen for the background script telling us the internet is unfrozen
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message.action === "CLEAR_PORTAL_ALERT") {
+      const border = document.getElementById('cpa-alert-frame');
+      const banner = document.getElementById('cpa-alert-banner');
+      if (border) border.remove();
+      if (banner) banner.remove();
+    }
+  });
+
+  // Guard against duplicate element generation
   if (document.getElementById('cpa-alert-frame')) return;
 
-  // Create the viewport bounding red box
   const structuralBorder = document.createElement('div');
   structuralBorder.id = 'cpa-alert-frame';
   structuralBorder.className = 'cpa-danger-border';
   
-  // Create the warning payload element
   const alertBanner = document.createElement('div');
+  alertBanner.id = 'cpa-alert-banner';
   alertBanner.className = 'cpa-warning-banner';
-  alertBanner.innerText = '⚠️ SECURITY ALERT: UNTRUSTED CAPTIVE PORTAL ENVIROMENT DETECTED';
+  alertBanner.innerText = '⚠️ SECURITY ALERT: UNTRUSTED CAPTIVE PORTAL ENVIRONMENT DETECTED';
 
-  // Append elements safely directly onto the document root element
   document.documentElement.appendChild(structuralBorder);
   document.documentElement.appendChild(alertBanner);
 })();

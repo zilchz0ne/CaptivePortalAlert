@@ -5,11 +5,10 @@
   "description": "Wraps captive portal login screens inside an explicit red isolation border to prevent Evil Twin credential harvesting.",
   "permissions": [
     "webNavigation",
-    "tabs",
     "scripting"
   ],
   "host_permissions": [
-    "<all_urls>"
+    "http://connectivitycheck.gstatic.com/*"
   ],
   "background": {
     "service_worker": "background.js",
