@@ -1,0 +1,33 @@
+/* Injecting absolute frame markers that ignore page scrolling */
+.cpa-danger-border {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border: 24px solid #ff0033 !important;
+  box-sizing: border-box !important;
+  z-index: 2147483647 !important; /* Maximum possible 32-bit integer z-index */
+  pointer-events: none !important; /* Allows clicking user fields underneath */
+}
+
+/* The clear warning header pinned to the top window */
+.cpa-warning-banner {
+  position: fixed !important;
+  top: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background-color: #ff0033 !important;
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 12px 24px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
