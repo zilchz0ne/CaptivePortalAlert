@@ -1,5 +1,7 @@
-(function injectOrClearDefensiveWrapper() {
-  // Listen for the background script telling us the internet is unfrozen
+// content.js
+
+(function initCaptiveAlert() {
+  // Listen for the background script confirming the exit signal
   chrome.runtime.onMessage.addListener((message) => {
     if (message.action === "CLEAR_PORTAL_ALERT") {
       const border = document.getElementById('cpa-alert-frame');
@@ -9,7 +11,6 @@
     }
   });
 
-  // Guard against duplicate element generation
   if (document.getElementById('cpa-alert-frame')) return;
 
   const structuralBorder = document.createElement('div');
@@ -19,7 +20,7 @@
   const alertBanner = document.createElement('div');
   alertBanner.id = 'cpa-alert-banner';
   alertBanner.className = 'cpa-warning-banner';
-  alertBanner.innerText = '⚠️ SECURITY ALERT: UNTRUSTED CAPTIVE PORTAL ENVIRONMENT DETECTED';
+  alertBanner.innerText = '⚠️ SECURITY ALERT: UNTRUSTED CAPTIVE PORTAL ENVIRONMENT';
 
   document.documentElement.appendChild(structuralBorder);
   document.documentElement.appendChild(alertBanner);

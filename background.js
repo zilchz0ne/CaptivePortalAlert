@@ -1,9 +1,10 @@
 // background.js
 
-chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
+chrome.webNavigation.onCommitted.addListener(async (details) => {
   if (details.frameId !== 0) return;
 
   try {
+    // Run an out-of-band cache-busted probe to verify the state
     const response = await fetch(`http://connectivitycheck.gstatic.com/generate_204?t=${Date.now()}`, {
       method: 'GET',
       cache: 'no-store',
@@ -11,35 +12,18 @@ chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
     });
 
     if (response.status !== 204) {
-      // Still trapped -> Deploy or maintain the alert
-      executeDefensiveOverlay(details.tabId);
+      // Still trapped -> Inject or maintain the permanent alert
+      await chrome.scripting.insertCSS({ target: { tabId: details.tabId }, files: ['content.css'] });
+      await chrome.scripting.executeScript({ target: { tabId: details.tabId }, files: ['content.js'] });
     } else {
-      // Connection is clear! -> Tell the content script to tear down the warning
-      clearDefensiveOverlay(details.tabId);
+      // Clean 204 received! The user logged out/authenticated. Clean up the tab.
+      await chrome.tabs.sendMessage(details.tabId, { action: "CLEAR_PORTAL_ALERT" }).catch(() => {});
     }
   } catch (error) {
-    // Network errors during a portal check usually mean we are still trapped/intercepted
-    executeDefensiveOverlay(details.tabId);
+    // Network failures during an explicit HTTP check imply captive intercept behavior
+    await chrome.scripting.insertCSS({ target: { tabId: details.tabId }, files: ['content.css'] });
+    await chrome.scripting.executeScript({ target: { tabId: details.tabId }, files: ['content.js'] });
   }
 }, {
   url: [{ hostSuffix: 'gstatic.com', pathContains: 'generate_204' }]
 });
-
-async function executeDefensiveOverlay(tabId) {
-  try {
-    await chrome.scripting.insertCSS({ target: { tabId }, files: ['content.css'] });
-    await chrome.scripting.executeScript({ target: { tabId }, files: ['content.js'] });
-  } catch (err) {
-    console.debug("Overlay injection deferred:", err);
-  }
-}
-
-async function clearDefensiveOverlay(tabId) {
-  try {
-    // Send a message to the content script running in that tab to remove the elements
-    await chrome.tabs.sendMessage(tabId, { action: "CLEAR_PORTAL_ALERT" });
-  } catch (err) {
-    // If the content script hasn't loaded yet or tab changed, ignore the error safely
-    console.debug("Clear signal deferred:", err);
-  }
-}

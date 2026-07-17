@@ -1,4 +1,5 @@
-/* Injecting absolute frame markers that ignore page scrolling */
+/* content.css */
+
 .cpa-danger-border {
   position: fixed !important;
   top: 0 !important;
@@ -7,11 +8,10 @@
   height: 100vh !important;
   border: 24px solid #ff0033 !important;
   box-sizing: border-box !important;
-  z-index: 2147483647 !important; /* Maximum possible 32-bit integer z-index */
-  pointer-events: none !important; /* Allows clicking user fields underneath */
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
 }
 
-/* The clear warning header pinned to the top window */
 .cpa-warning-banner {
   position: fixed !important;
   top: 24px !important;
@@ -23,8 +23,7 @@
   font-size: 16px !important;
   font-weight: bold !important;
   padding: 12px 24px !important;
-  border-bottom-left-radius: 8px !important;
-  border-bottom-right-radius: 8px !important;
+  border-radius: 8px !important;
   z-index: 2147483647 !important;
   pointer-events: auto !important;
   box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CaptivePortalAlert",
   "version": "1.0",
-  "description": "Wraps captive portal login screens inside an explicit red isolation border to prevent Evil Twin credential harvesting.",
+  "description": "Wraps captive portal login screens inside a rigid red defensive border.",
   "permissions": [
     "webNavigation",
     "scripting"
