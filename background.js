@@ -23,7 +23,10 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
     await injectDefensiveUI(details.tabId);
   }
 }, {
-  url: [{ hostSuffix: 'gstatic.com', pathContains: 'generate_204' }]
+  url: [
+    { hostSuffix: 'gstatic.com', pathContains: 'generate_204' },
+    { schemes: ['http'] }
+  ]
 });
 
 // 2. CHILD TAB TRACKER: Flag new tabs opened by a captive portal tab
