@@ -8,7 +8,7 @@
     "scripting"
   ],
   "host_permissions": [
-    "http://connectivitycheck.gstatic.com/*"
+	  "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js",
