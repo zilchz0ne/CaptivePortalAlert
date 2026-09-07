@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - CaptivePortalAlert</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+        h1, h2 { color: #111; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Privacy Policy for CaptivePortalAlert</h1>
+    <p>Last updated: September 2026</p>
+
+    <h2>1. Overview</h2>
+    <p><strong>CaptivePortalAlert</strong> is a security-focused open-source Chrome extension designed to detect network-level captive portal redirects and alert users to potential risks on unencrypted public Wi-Fi networks.</p>
+
+    <h2>2. Data Collection and Usage</h2>
+    <p><strong>We collect zero user data.</strong> CaptivePortalAlert does not record, log, store, or transmit any user activity, browsing history, IP addresses, credentials, or personal information.</p>
+
+    <h2>3. Permissions Justification</h2>
+    <p>To perform network detection, the extension uses specific Chrome permissions solely inside your local browser:</p>
+    <ul>
+        <li><code>webNavigation</code>: Detects initial network probes to connectivity endpoints (e.g., <code>generate_204</code>) and flags redirected tab IDs locally in memory.</li>
+        <li><code>scripting</code> & <code>&lt;all_urls&gt;</code>: Injects a visual alert banner (CSS/JS) into captive portal login pages to notify you of an untrusted environment.</li>
+    </ul>
+
+    <h2>4. Network Requests</h2>
+    <p>The extension sends a stateless, lightweight background probe to <code>http://connectivitycheck.gstatic.com/generate_204</code> solely to verify network status. No personal identifiers or cookies are included in this check.</p>
+
+    <h2>5. Contact</h2>
+    <p>For security reports or inquiries, submit an issue on the project's GitHub repository or email: <a href="mailto:zeesad.arham.cse@ulab.edu.bd">zeesad.arham.cse@ulab.edu.bd</a></p>
+</body>
+</html>
