@@ -1,4 +1,4 @@
-/* content.css */
+/* src/content.css */
 
 .cpa-danger-border {
   position: fixed !important;
@@ -6,10 +6,18 @@
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  border: 24px solid #ff0033 !important;
+  border: 16px solid #ff1744 !important;
+  box-shadow: inset 0 0 30px rgba(255, 23, 68, 0.6) !important;
   box-sizing: border-box !important;
   z-index: 2147483647 !important;
   pointer-events: none !important;
+  animation: cpa-pulse 2s infinite ease-in-out !important;
+}
+
+@keyframes cpa-pulse {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
 }
 
 .cpa-warning-banner {
@@ -17,16 +25,19 @@
   top: 24px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  background-color: #ff0033 !important;
+  background: rgba(220, 38, 38, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
   color: #ffffff !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-size: 16px !important;
-  font-weight: bold !important;
-  padding: 12px 24px !important;
-  border-radius: 8px !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   z-index: 2147483647 !important;
   pointer-events: auto !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
   text-align: center !important;
   white-space: nowrap !important;
 }
