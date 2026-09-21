@@ -1,43 +1,168 @@
 /* src/content.css */
 
-.cpa-danger-border {
+/* Outer Box Hazard Frame */
+#cpa-alert-frame {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  border: 16px solid #ff1744 !important;
-  box-shadow: inset 0 0 30px rgba(255, 23, 68, 0.6) !important;
-  box-sizing: border-box !important;
-  z-index: 2147483647 !important;
   pointer-events: none !important;
-  animation: cpa-pulse 2s infinite ease-in-out !important;
+  z-index: 2147483645 !important;
+  box-sizing: border-box !important;
+  
+  border: 24px solid transparent !important;
+  border-image: repeating-linear-gradient(
+    -45deg,
+    #ffcc00 0px,
+    #ffcc00 20px,
+    #111827 20px,
+    #111827 40px
+  ) 24 !important;
+  
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7) !important;
 }
 
-@keyframes cpa-pulse {
-  0% { opacity: 0.85; }
-  50% { opacity: 1; }
-  100% { opacity: 0.85; }
-}
-
-.cpa-warning-banner {
+/* Full-Screen SVG Container for Tapes */
+#cpa-tape-wrapper {
   position: fixed !important;
-  top: 24px !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: 2147483646 !important;
+  overflow: hidden !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+#cpa-tape-wrapper.cpa-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cpa-caution-tape-svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cpa-tape-path {
+  fill: none !important;
+  stroke: #ffcc00 !important;
+  stroke-width: 44px !important;
+  stroke-linecap: square !important;
+  filter: drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.45)) !important;
+}
+
+.cpa-tape-text {
+  fill: #000000 !important;
+  font-family: "Arial Black", Gadget, Impact, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+}
+
+/* Header Container for Board + Button */
+#cpa-header-bar {
+  position: fixed !important;
+  top: 32px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  background: rgba(220, 38, 38, 0.95) !important;
-  backdrop-filter: blur(8px) !important;
-  color: #ffffff !important;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
-  padding: 10px 20px !important;
-  border-radius: 50px !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   z-index: 2147483647 !important;
   pointer-events: auto !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
-  text-align: center !important;
+  
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  max-width: 90vw !important;
+}
+
+/* Wide, Low-Height Police Warning Board */
+#cpa-police-board {
+  background: radial-gradient(circle at center, #ffd633 0%, #e6b800 100%) !important;
+  border: 4px solid #000000 !important;
+  outline: 2px solid #ffcc00 !important;
+  border-radius: 4px !important;
+  
+  padding: 8px 28px !important;
+  min-width: 620px !important;
+  
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 2px #ffe680 !important;
+    
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+#cpa-police-board.cpa-hidden-board {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.cpa-badge {
+  background: #000000 !important;
+  color: #ffcc00 !important;
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  font-size: 13px !important;
+  letter-spacing: 2px !important;
+  padding: 4px 8px !important;
+  border-radius: 2px !important;
   white-space: nowrap !important;
+}
+
+.cpa-board-text-group {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+.cpa-board-title {
+  color: #000000 !important;
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  font-size: 17px !important;
+  letter-spacing: 2px !important;
+  line-height: 1.1 !important;
+  text-transform: uppercase !important;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4) !important;
+}
+
+.cpa-board-sub {
+  color: #1a1a1a !important;
+  font-family: "Arial Black", Gadget, sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  line-height: 1.1 !important;
+}
+
+/* Center-Aligned Scissors / Tape Toggle Button */
+#cpa-toggle-btn {
+  width: 44px !important;
+  height: 44px !important;
+  flex-shrink: 0 !important;
+  border-radius: 50% !important;
+  
+  background: #ffcc00 !important;
+  border: 3px solid #000000 !important;
+  color: #000000 !important;
+  
+  font-size: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+#cpa-toggle-btn:hover {
+  background: #e6b800 !important;
+  transform: scale(1.1) !important;
 }
