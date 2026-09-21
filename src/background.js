@@ -1,7 +1,23 @@
 // background.js
 
-const flaggedTabs = new Set();
+async function isFlagged(tabId) {
+  const { flaggedTabs = [] } = await chrome.storage.session.get('flaggedTabs');
+  return flaggedTabs.includes(tabId);
+}
 
+async function addFlagged(tabId) {
+  const { flaggedTabs = [] } = await chrome.storage.session.get('flaggedTabs');
+  if (!flaggedTabs.includes(tabId)) {
+    flaggedTabs.push(tabId);
+    await chrome.storage.session.set({ flaggedTabs });
+  }
+}
+
+async function removeFlagged(tabId) {
+  const { flaggedTabs = [] } = await chrome.storage.session.get('flaggedTabs');
+  const updated = flaggedTabs.filter(id => id !== tabId);
+  await chrome.storage.session.set({ flaggedTabs: updated });
+}
 // 1. PRIMARY DETECTOR: Catches the initial gstatic.com probe
 chrome.webNavigation.onCommitted.addListener(async (details) => {
   if (details.frameId !== 0) return;
@@ -15,11 +31,11 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
 
     if (response.status !== 204) {
       // Trapped -> Add tabId to set
-      flaggedTabs.add(details.tabId);
+      await addFlagged(details.tabId);
       await injectDefensiveUI(details.tabId);
     }
   } catch (error) {
-    flaggedTabs.add(details.tabId);
+    await addFlagged(details.tabId);
     await injectDefensiveUI(details.tabId);
   }
 }, {
@@ -30,9 +46,9 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
 });
 
 // 2. CHILD TAB TRACKER: Flag new tabs opened by a captive portal tab
-chrome.webNavigation.onCreatedNavigationTarget.addListener((details) => {
-  if (flaggedTabs.has(details.sourceTabId)) {
-    flaggedTabs.add(details.tabId);
+chrome.webNavigation.onCreatedNavigationTarget.addListener(async (details) => {
+  if (await isFlagged(details.sourceTabId)) {
+    await addFlagged(details.tabId);
   }
 });
 
@@ -40,14 +56,14 @@ chrome.webNavigation.onCreatedNavigationTarget.addListener((details) => {
 chrome.webNavigation.onCommitted.addListener(async (details) => {
   if (details.frameId !== 0) return;
 
-  if (flaggedTabs.has(details.tabId)) {
+  if (await isFlagged(details.tabId)) {
     await injectDefensiveUI(details.tabId);
   }
 });
 
 // Cleanup memory when a tab is closed
 chrome.tabs.onRemoved.addListener((tabId) => {
-  flaggedTabs.delete(tabId);
+	removeFlagged(tabId);
 });
 
 async function injectDefensiveUI(tabId) {

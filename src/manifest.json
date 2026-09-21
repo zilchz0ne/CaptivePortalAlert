@@ -5,7 +5,8 @@
   "description": "Wraps captive portal login screens inside a rigid red defensive border.",
   "permissions": [
     "webNavigation",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "host_permissions": [
 	  "<all_urls>"
