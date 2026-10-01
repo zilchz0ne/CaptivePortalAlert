@@ -1,57 +1,65 @@
 # CaptivePortalAlert
 
-**CaptivePortalAlert** is a lightweight, defensive Google Chrome extension (Manifest V3) designed to mitigate risks associated with untrusted public Wi-Fi networks—specifically **Evil Twin APs** and **phishing portals**. 
+**CaptivePortalAlert** is a lightweight, privacy-focused Chrome Extension (Manifest V3) designed to detect captive portals and untrusted network gateways (e.g., public Wi-Fi login pages or Evil Twin access points).
 
-When connected to a network that intercepts HTTP requests, the extension highlights the portal login interface with a prominent visual warning frame to maintain situational awareness.
+When an HTTP request interception or captive portal is detected, the extension overlays a high-visibility hazard warning around the page to alert you before sensitive credentials or personal data are entered.
 
 ---
 
 ## 🛡️ Key Features
 
-* **Proactive Interception:** Captures connectivity check probes (`connectivitycheck.gstatic.com/generate_204`) via `chrome.webNavigation` before content fully loads.
-* **Visual Isolation:** Dynamically injects a high-visibility, top-layer red defensive border (`#ff0033`) and alert banner around intercepted login screens.
-* **Tab Tracking:** Propagates danger flags to child tabs spawned directly from an active portal page.
-* **Privacy-First Design:** Zero external data transmission, analytics, or user logging.
+- **Automated Detection:** Intercepts network connectivity check probes to identify captive portals before pages load completely.
+- **Visual Warning Overlay:** Injects a prominent, top-layer hazard frame and warning banner on unauthenticated or intercepted network tabs.
+- **Inherited Tab Tracking:** Automatically applies protection to new child tabs spawned from a flagged portal session.
+- **Zero Data Collection:** Runs entirely locally within the browser with no external logging, telemetry, or third-party analytics.
 
 ---
 
-## 🏗️ Technical Architecture & Permissions
+## 📁 Repository Structure
 
-### Manifest Permissions
-* `webNavigation`: Listens for top-level frame navigation and monitors HTTP redirects triggered by captive portals.
-* `scripting`: Dynamically injects style isolation (`content.css`) and DOM elements (`content.js`) into flagged tabs.
-* `<all_urls>`: Required host permission to inject warning overlays on arbitrary captive portal domains.
-
-### Detection Workflow
-1. Intercepts HTTP requests matching `generate_204` connectivity checks.
-2. Evaluates probe response. If trapped or redirected (non-204 status), the origin tab ID is stored in memory (`flaggedTabs`).
-3. Injects defensive UI assets (`content.css`, `content.js`) into the target tab.
-4. Cleans up tab references on closure to optimize background memory usage.
+```text
+├── docs/          # Static landing page, Privacy Policy, and Terms of Service
+├── src/           # Extension source code (manifest, service worker, content scripts)
+├── test/          # Local testing environment and mock portal server
+└── LICENSE        # Project license
+```
 
 ---
 
-## 🚀 Installation & Local Development
+## 🚀 Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/zilchz0ne/CaptivePortalAlert.git](https://github.com/zilchz0ne/CaptivePortalAlert.git)
+   git clone https://github.com/zilchz0ne/CaptivePortalAlert.git
+   cd CaptivePortalAlert
    ```
-2. **Load into Chrome**
-- Open Chrome and navigate to <chrome://extensions/>.
-- Enable **Developer mode** using the toggle switch in the top-right corner.
-- Click **Load unpacked** and select the `src/` directory of this repository.
 
-## 🧪 Testing
-A local testing environment is located under the `test/` directory.
-Run the local mock portal server:
+2. **Load into Google Chrome:**
+   - Open Chrome and navigate to `chrome://extensions/`.
+   - Enable **Developer mode** using the toggle in the top-right corner.
+   - Click **Load unpacked** and select the `src/` directory.
+
+---
+
+## 🧪 Local Testing
+
+A local mock server is provided in the `test/` directory to simulate a captive portal response:
 
 ```bash
 sudo python3 test/server.py
 ```
 
-## 📄 Documentation & Legal
-- [Privacy Policy](./docs/privacy.html)
-- [Terms of Service](./docs/terms.html)
+Navigate to the mock endpoint or test network routes locally to verify the detection workflow and visual overlay.
+
+---
+
+## 📄 Legal & Documentation
+
+- [Privacy Policy](https://zilchz0ne.github.io/CaptivePortalAlert/privacy.html)
+- [Terms of Service](https://zilchz0ne.github.io/CaptivePortalAlert/terms.html)
+
+---
 
 ## 📜 License
-Distributed under the MIT License. See `LICENSE` for more information.
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for details.
