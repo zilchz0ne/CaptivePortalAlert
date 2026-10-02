@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in – Googol Account</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #090d16; /* Deep obsidian background */
+      color: #e2e8f0;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 32px;
+      background: #121824; /* Crisp dark card */
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    /* Neutral Monochromatic Brand Styling */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #f4f4f5;
+    }
+
+    .brand-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #f4f4f5; /* Clean white text */
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #f4f4f5;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #71717a;
+      margin-bottom: 28px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #a1a1aa;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #ffffff;
+      background: #090d16;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-group input::placeholder {
+      color: #52525b;
+    }
+
+    .input-group input:focus {
+      border-color: #52525b;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .link-action {
+      font-size: 13px;
+      color: #a1a1aa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .link-action:hover {
+      color: #f4f4f5;
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      background: #f4f4f5;
+      color: #090d16;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #e4e4e7;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #52525b;
+      border-top: 1px solid #18181b;
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="brand">
+      <div class="brand-icon">G</div>
+      <div class="brand-name">Googol</div>
+    </div>
+
+    <h1 class="title">Sign in</h1>
+    <p class="subtitle">to continue to Googol Account</p>
+
+    <form action="#" method="POST" onsubmit="event.preventDefault();">
+      <div class="input-group">
+        <label for="email">Email or Username</label>
+        <input type="text" id="email" name="email" required placeholder="user@googol.net" autocomplete="off">
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="••••••••" autocomplete="off">
+      </div>
+
+      <div class="actions">
+        <a href="#" class="link-action">Forgot password?</a>
+        <button type="submit" class="btn-submit">Continue</button>
+      </div>
+    </form>
+
+    <div class="footer-note">
+      Googol Authentication Service • Demonstration Portal
+    </div>
+  </div>
+
+</body>
+</html>
