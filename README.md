@@ -15,6 +15,12 @@ When an HTTP request interception or captive portal is detected, the extension o
 
 ---
 
+## 🛠️ How It Works
+
+When you connect to an unauthenticated network, the extension monitors HTTP response codes from background probe checks. If network interception or a redirect is detected, a defensive UI frame is injected into the active browser tab to visually isolate the untrusted login page.
+
+---
+
 ## 📁 Repository Structure
 
 ```text
