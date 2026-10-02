@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Public Wi-Fi Phishing Alert",
-  "version": "1.0",
-  "description": "Wraps captive portal login screens inside a rigid visual defensive border.",
+  "short_name": "Wifi Alert",
+  "version": "1.0.0",
+  "description": "Alerts you when connected to public Wi-Fi captive portals to help prevent evil twin and phishing attacks.",
   "permissions": [
     "webNavigation",
     "scripting",
