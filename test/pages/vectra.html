@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectra Core – Identity Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #090a0f;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 40%);
+      color: #f3f4f6;
+      overflow: hidden;
+    }
+
+    /* Ambient background blur element */
+    .glow-orb {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      padding: 48px 40px;
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    /* Custom Fictional Brand Logo */
+    .brand-logo {
+      margin: 0 auto 24px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+    }
+
+    .brand-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 16px 16px 14px;
+      font-size: 15px;
+      color: #ffffff;
+      background: rgba(31, 41, 55, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .input-group input:focus {
+      border-color: #6366f1;
+      background: rgba(31, 41, 55, 0.8);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      font-size: 14px;
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:not(:placeholder-shown) ~ label {
+      top: 0;
+      transform: translateY(-50%) scale(0.85);
+      left: 12px;
+      padding: 0 6px;
+      background: #111827;
+      border-radius: 4px;
+      color: #818cf8;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 13px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #9ca3af;
+      cursor: pointer;
+    }
+
+    .remember-me input[type="checkbox"] {
+      accent-color: #6366f1;
+      width: 15px;
+      height: 15px;
+      border-radius: 4px;
+    }
+
+    .forgot-pass {
+      color: #818cf8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .forgot-pass:hover {
+      color: #a5b4fc;
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+      background: linear-gradient(135deg, #6767f6 0%, #554ce8 100%);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-orb"></div>
+
+  <div class="card">
+    <!-- Fictional Abstract Emblem SVG -->
+    <div class="brand-logo">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#grad1)"/>
+        <path d="M2 23L16 30L30 23V17L16 24L2 17V23Z" fill="url(#grad2)"/>
+        <defs>
+          <linearGradient id="grad1" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#818CF8"/>
+            <stop offset="1" stop-color="#C084FC"/>
+          </linearGradient>
+          <linearGradient id="grad2" x1="2" y1="17" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6366F1"/>
+            <stop offset="1" stop-color="#A855F7"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <h1 class="brand-title">Vectra Core</h1>
+    <p class="brand-subtitle">Authenticate to access network resources</p>
+
+    <form action="/login" method="POST">
+      <div class="input-group">
+        <input type="text" id="username" name="username" required placeholder=" ">
+        <label for="username">Identity ID / Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" name="password" required placeholder=" ">
+        <label for="password">Access Key</label>
+      </div>
+
+      <div class="form-options">
+        <label class="remember-me">
+          <input type="checkbox" name="remember"> Keep session active
+        </label>
+        <a href="#" class="forgot-pass">Recover key?</a>
+      </div>
+
+      <button type="submit" class="btn-submit">Sign In to Gateway</button>
+    </form>
+
+    <p class="footer-note">Vectra Secure Gateway v4.12 • Enterprise Access</p>
+  </div>
+
+</body>
+</html>
