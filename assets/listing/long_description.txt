@@ -1,0 +1,33 @@
+Public Wi-Fi networks at coffee shops, airports, hotels, and venues often force you to sign in through a webpage called a captive portal. While many are legitimate, malicious actors can easily create rogue access points ("evil twin" attacks) with fake login pages designed to capture your credentials or intercept your traffic.
+
+Public Wi-Fi Phishing Alert automatically detects when your browser is redirected to a captive portal, giving you an immediate warning before you log in or share sensitive information.
+
+
+KEY FEATURES
+
+• Instant Captive Portal Detection: Scans connections on public networks and alerts you the moment a portal prompt or network redirect occurs.
+• Evil Twin Defense: Helps you spot suspicious login portals before entering personal information or social sign-ins.
+• Privacy-First Design: Operates locally on your device without sending your browsing data or network traffic to external servers.
+• Lightweight & Efficient: Runs seamlessly in the background using minimal browser resources.
+
+
+HOW IT WORKS
+
+1. Connect to any public Wi-Fi access point.
+2. If the network redirects you to a captive portal page, Public Wi-Fi Phishing Alert triggers a clear warning notification.
+3. Review the network page safely before entering passwords, emails, or credentials.
+
+
+WHO IS THIS FOR?
+
+• Frequent travelers using airport, train, or hotel Wi-Fi.
+• Remote workers and students connecting in cafes or co-working spaces.
+• Security-conscious users who want an added layer of network awareness.
+
+
+PRIVACY & TRANSPARENCY
+
+Your privacy matters. Public Wi-Fi Phishing Alert:
+• Does NOT track, log, or sell your browsing history.
+• Does NOT require unnecessary site access permissions.
+• Performs all detection routines locally inside your browser.
