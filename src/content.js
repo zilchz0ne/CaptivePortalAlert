@@ -20,7 +20,7 @@
   const policeBoard = document.createElement('div');
   policeBoard.id = 'cpa-police-board';
   policeBoard.innerHTML = `
-    <div class="cpa-badge">POLICE LINE</div>
+    <div class="cpa-badge">Wi-Fi ALERT</div>
     <div class="cpa-board-text-group">
       <div class="cpa-board-title">CAPTIVE PORTAL ALERT — UNTRUSTED AREA</div>
       <div class="cpa-board-sub">DO NOT ENTER SENSITIVE DATA OR PERSONAL CREDENTIALS</div>
