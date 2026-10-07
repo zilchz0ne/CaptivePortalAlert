@@ -69,3 +69,8 @@ Navigate to the mock endpoint or test network routes locally to verify the detec
 ## 📜 License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## 💳 Credits
+Huge thanks to [Atanu](https://github.com/atanuroy911) Sir for guiding me throughout the project. I could not have completed it without his constant support, supervision, advice, and guidance.
