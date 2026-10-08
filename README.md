@@ -61,6 +61,7 @@ Open Chrome. Try browsing to `http://neverssl.com` or `https://github.com` to ve
 
 - [Privacy Policy](PRIVACY.md)
 - [Terms of Service](TERMS.md)
+- [Contact Us](CONTACT.md)
 
 ---
 
