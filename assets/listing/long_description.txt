@@ -8,7 +8,7 @@ KEY FEATURES
 • Instant Captive Portal Detection: Uses smart algorithms to detect captive portals seemlessly.
 • Evil Twin Defense: Helps you spot suspicious login portals before entering personal information or social sign-ins.
 • Privacy-First Design: Operates locally on your device without sending your browsing data or network traffic to external servers.
-• Lightweight & Efficient: Runs seamlessly in the background using minimal browser resources. Uses interrupt instead of polling in order to not run in the background unnecessarily.
+• Lightweight & Efficient: Runs seamlessly in the background using minimal browser resources. Uses event-driven Manifest V3 background listeners instead of continuous background polling.
 
 HOW IT WORKS
 
@@ -28,5 +28,5 @@ PRIVACY & TRANSPARENCY
 
 Your privacy matters. Public Wi-Fi Phishing Alert:
 • Does NOT track, log, or sell your browsing history.
-• Does NOT require unnecessary site access permissions.
+• Requires broad host permissions solely to inject warning overlays on intercepted portal domains across the web.
 • Performs all detection routines locally inside your browser.

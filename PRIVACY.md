@@ -23,6 +23,10 @@ warnings on untrusted public Wi-Fi networks.
 
 ## 3. Extension Permissions
 
+### Broad Host Permission Disclosure (`<all_urls>`)
+This extension requests access to `<all_urls>` solely because captive portal login pages operate on arbitrary, unpredictable domain names (e.g., `192.168.1.1`, `login.hotelwifi.com`). This permission is strictly utilized to inject local warning CSS/JS stylesheets into flagged portal tabs and never to inspect or extract web contents.
+
+### Other Permissions
 The extension requests specific permissions solely to perform local
 network checks and render warning interface elements:
 
