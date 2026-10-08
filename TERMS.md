@@ -4,15 +4,14 @@
 
 ## 1. Acceptance of Terms
 
-By installing and using the CaptivePortalAlert browser extension (\"the
+By installing and using the Public Wi-Fi Phishing Alert browser extension (\"the
 Extension\"), you agree to be bound by these Terms of Service. If you do
 not agree to these terms, please do not use or install the Extension.
 
 ## 2. Intended Use
 
-CaptivePortalAlert is designed to provide visual warnings (hazard
-overlays) when an unencrypted network redirect, intercepted connection,
-or captive portal is detected. It is intended to increase situational
+Public Wi-Fi Phishing Alert is designed to provide visual warnings (hazard
+overlays) when a captive portal is detected. It is intended to increase situational
 awareness against rogue access points (e.g., Evil Twin attacks) on
 public Wi-Fi networks.
 
@@ -20,7 +19,7 @@ public Wi-Fi networks.
 
 **The Extension is provided \"AS IS\", without warranty of any kind.**
 
-While CaptivePortalAlert provides an added layer of situational
+While Public Wi-Fi Phishing Alert provides an added layer of situational
 awareness, it does not guarantee absolute security or threat prevention.
 It cannot prevent you from voluntarily submitting sensitive data, nor
 can it detect all possible network interception methods.

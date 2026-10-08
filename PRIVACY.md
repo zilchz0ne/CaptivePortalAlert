@@ -1,10 +1,10 @@
-# Privacy Policy for CaptivePortalAlert
+# Privacy Policy for Public Wi-Fi Phishing Alert
 
 **Last updated:** October 2026
 
 ## 1. Overview
 
-CaptivePortalAlert is an open-source browser extension designed to
+Public Wi-Fi Phishing Alert is an open-source browser extension designed to
 detect network-level captive portal redirects and display visual
 warnings on untrusted public Wi-Fi networks.
 
@@ -19,7 +19,7 @@ warnings on untrusted public Wi-Fi networks.
 - **Local Session State:** Transient identifiers (tab IDs) are stored in
   local browser memory (`chrome.storage.session`) strictly to track
   active warning overlays across navigations. This data never leaves
-  your device and is destroyed when the tab or browser is closed.
+  your device and is destroyed when the browser is closed.
 
 ## 3. Extension Permissions
 
@@ -49,7 +49,6 @@ document will be updated accordingly in the repository.
 
 ## 6. Contact
 
-For questions or security concerns regarding this extension, please
-submit an issue on the project GitHub repository or contact:
+For questions or security concerns regarding this extension, please contact:
 
 **Email:** bytetrace.elixir448@slmail.me

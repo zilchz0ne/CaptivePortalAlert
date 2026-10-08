@@ -1,1 +1,1 @@
-Detect fake or dangerous public Wi-Fi networks. Alerts you to captive portals to protect against evil twin phishing attacks.
+Detect potentially fake or dangerous public Wi-Fi networks. Alerts you to captive portals to protect against evil twin phishing attacks.

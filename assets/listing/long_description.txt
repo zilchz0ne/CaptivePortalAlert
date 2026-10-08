@@ -5,17 +5,16 @@ Public Wi-Fi Phishing Alert automatically detects when your browser is redirecte
 
 KEY FEATURES
 
-• Instant Captive Portal Detection: Scans connections on public networks and alerts you the moment a portal prompt or network redirect occurs.
+• Instant Captive Portal Detection: Uses smart algorithms to detect captive portals seemlessly.
 • Evil Twin Defense: Helps you spot suspicious login portals before entering personal information or social sign-ins.
 • Privacy-First Design: Operates locally on your device without sending your browsing data or network traffic to external servers.
-• Lightweight & Efficient: Runs seamlessly in the background using minimal browser resources.
-
+• Lightweight & Efficient: Runs seamlessly in the background using minimal browser resources. Uses interrupt instead of polling in order to not run in the background unnecessarily.
 
 HOW IT WORKS
 
 1. Connect to any public Wi-Fi access point.
-2. If the network redirects you to a captive portal page, Public Wi-Fi Phishing Alert triggers a clear warning notification.
-3. Review the network page safely before entering passwords, emails, or credentials.
+2. If the network redirects you to a captive portal page, Public Wi-Fi Phishing Alert triggers a clear visual warning overlay.
+3. Do NOT enter private and sensitive passwords, emails, or credentials when the alert overlay is seen.
 
 
 WHO IS THIS FOR?
